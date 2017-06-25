@@ -5,6 +5,17 @@ from subprocess import check_output
 import dot3k.backlight as backlight
 import dot3k.lcd as lcd
 
+scriptname = "RaspPyNet"
+
+tmp = os.popen("ps -A | grep RaspPyNet").read()
+counter = tmp.count(scriptname)
+
+if counter > 0:
+    print(counter, "processes running of ", scriptname)
+
+else:
+    print ("Script is not running - needs to be started!")
+
 start_time = time.time()
 
 ips = check_output(['hostname', '--all-ip-addresses'])
